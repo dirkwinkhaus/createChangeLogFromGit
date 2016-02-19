@@ -4,6 +4,7 @@
 #CONFIGURATION                      #
 #####################################
 
+projectName='My Change Log'
 formatCommit='%H%x09%s'
 changeLogFile='change.log'
 
@@ -22,7 +23,7 @@ showEditedFiles=0
 
 >${changeLogFile}
 
-echo Luther Blog Change Log>>${changeLogFile}
+echo ${projectName}>>${changeLogFile}
 echo created: `date`>>${changeLogFile}
 echo =====================================>>${changeLogFile}
 echo >>${changeLogFile}
