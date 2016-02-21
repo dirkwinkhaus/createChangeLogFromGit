@@ -1,0 +1,49 @@
+My Change Log
+created: Sun Feb 21 20:20:19 CET 2016
+=====================================
+
+1.0.4
+--------
+
+
+	 c87198e7e76d64e58a7fd99274d7c28083af1988	fixed tag listing
+
+
+
+1.0.3
+--------
+
+
+	 e63f76644bad5a74fd9914e32273e1958ec086fc	fixed 't' prefix ignore and removed 'fileshow' option
+	 5ad61d1df0e2cecaefe61baf205e6ef8cacb21cf	run create change log
+
+
+
+1.0.2
+--------
+
+
+	 ec79cda08acab566de73769bed81e0c5aa9e03d5	edit readme
+	 64a4ffa67308c1be133459081917231c392c8747	created changelog
+
+
+
+1.0.1
+--------
+
+
+	 09b208bf83e83a119f80e5e431f867d845b3c1ab	make project name configurable
+
+
+
+1.0.0
+--------
+
+
+	 bc1d57c874dc5d0634b5eca316ff43b729a3eea1	edit readme.md again
+	 196099d037c9974b45a16bf7374f26787bfefaaa	edit readme.md
+	 21233fd4002efab88578a3f95c0fb87e28d34084	Create README.md
+	 9cb592d867090e643c2bd21990779aaa7a1a2633	first commit
+
+
+
