@@ -62,7 +62,7 @@ do
 
     if [[ ${index} -lt ${count} ]] ;
     then
-        commits=`git log --pretty=format:"${formatCommit}" --full-index ${clean_tags_from_test_tags_commits[$index + 1]}^^..${clean_tags_from_test_tags_commits[$index]}`
+        commits=`git log --pretty=format:"${formatCommit}" --full-index ${clean_tags_from_test_tags_commits[$index + 1]}..${clean_tags_from_test_tags_commits[$index]}`
     else
         commits=`git log --pretty=format:"${formatCommit}" --full-index ${clean_tags_from_test_tags_commits[$index]}`
     fi
@@ -78,6 +78,8 @@ do
     echo>>${changeLogFile}
     echo>>${changeLogFile}
     echo>>${changeLogFile}
+
+    ((index++))
 done
 
 IFS=${storeIfs}
