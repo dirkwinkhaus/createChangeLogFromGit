@@ -11,13 +11,6 @@ changeLogFile='change.log'
 #####################################
 
 #####################################
-#NOT IMPLEMENTED                    #
-#####################################
-
-showEditedFiles=0
-
-
-#####################################
 #CODE                               #
 #####################################
 
@@ -48,14 +41,11 @@ clean_tags_from_test_tags_commits=()
 index=0
 for tag in ${tags[@]};
 do
-    if [[ ${tag:0:1} != "t" ]] ;
-    then
-        commit_hash=`git rev-list -n 1 $tag`
-        clean_tags_from_test_tags[ ${index} ]=$tag
-        clean_tags_from_test_tags_commits[ ${index} ]=$commit_hash
-        echo -e "found tag\t${tag} ($index) with hash\t\t$commit_hash"
-        ((index++))
-    fi
+    commit_hash=`git rev-list -n 1 $tag`
+    clean_tags_from_test_tags[ ${index} ]=$tag
+    clean_tags_from_test_tags_commits[ ${index} ]=$commit_hash
+    echo -e "found tag\t${tag} ($index) with hash\t\t$commit_hash"
+    ((index++))
 done
 
 count=${index}
@@ -73,40 +63,17 @@ do
     if [[ ${index} -lt ${count} ]] ;
     then
         commits=`git log --pretty=format:"${formatCommit}" --full-index ${clean_tags_from_test_tags_commits[$index + 1]}^^..${clean_tags_from_test_tags_commits[$index]}`
-        if [[ ${showEditedFiles} -eq 1 ]] ;
-        then
-            editedFiles=`git log --name-only --pretty=oneline --full-index ${clean_tags_from_test_tags_commits[$index + 1]}^^..${clean_tags_from_test_tags_commits[$index]}`
-        fi
     else
         commits=`git log --pretty=format:"${formatCommit}" --full-index ${clean_tags_from_test_tags_commits[$index]}`
-        if [[ ${showEditedFiles} -eq 1 ]] ;
-        then
-            editedFiles=`git log --name-only --pretty=oneline --full-index ${clean_tags_from_test_tags_commits[$index]}`
-        fi
     fi
 
     set -- $commits
     commitsArray=( $@ )
-    set -- $editedFiles
-    editedFilesArray=( $@ )
 
     for commit in ${commitsArray[@]};
     do
         echo -e '\t' $commit>>${changeLogFile}
     done
-
-
-    if [[ ${showEditedFiles} -eq 1 ]] ;
-    then
-        echo>>${changeLogFile}
-        echo -e '\t\t'modified files:>>${changeLogFile}
-        for editedFile in ${editedFilesArray[@]};
-        do
-            echo -e '\t\t'$editedFile>>${changeLogFile}
-        done
-    fi
-
-    ((index++))
 
     echo>>${changeLogFile}
     echo>>${changeLogFile}
